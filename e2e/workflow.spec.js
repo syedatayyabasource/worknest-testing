@@ -1,0 +1,3 @@
+const {test,expect}=require('@playwright/test');
+
+test('user can search, filter and add a task',async({page})=>{await page.goto('/');await expect(page.getByRole('heading',{name:'Keep work moving.'})).toBeVisible();await page.getByLabel('Search tasks').fill('homepage');await expect(page.getByText('Review homepage layout')).toBeVisible();await page.getByLabel('Search tasks').fill('');await page.getByLabel('Filter by status').selectOption('Open');await expect(page.getByText('Update API documentation')).toBeVisible();await page.getByPlaceholder('What needs to be done?').fill('Prepare sprint plan');await page.getByRole('button',{name:'Add task'}).click();await expect(page.getByText('Prepare sprint plan')).toBeVisible()});
